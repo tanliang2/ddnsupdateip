@@ -38,7 +38,6 @@ def saveIpv4(ipv4):
 if __name__ == '__main__':
     ip = getIpv4()
     print(ip)
-    ip = '113.111.244.82'
     save_ip = getRecordIpv4()
     if save_ip == ip:
         print("same")
