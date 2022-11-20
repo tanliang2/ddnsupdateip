@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import os
 import re
@@ -28,7 +27,6 @@ def getRecordIpv4():
         print("open error")
         return ""
 
-
 def saveIpv4(ipv4):
     b = json.dumps(ipv4)
     f2 = open('ip.json', 'w')
@@ -47,13 +45,12 @@ if __name__ == '__main__':
     else:
         ipv6 = getIPv6()
         print(ipv6)
-        url = 'http://api.dynu.com/nic/update?myip=' + ip +'&myipv6='+ipv6+ '&username=tanliangddns2&password=3ad200dd64e135c194a3516bda7bd6a8'
+        url = 'http://162.216.242.253/nic/update?myip=' + ip +'&myipv6='+ipv6+ '&username=tanliangddns2&password=3ad200dd64e135c194a3516bda7bd6a8'
         header = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
             'Authorization': 'Basic [BASE64-ENCODED-USERNAME:PASSWORD-PAIR]',
         }
         print(url)
-
         r = requests.get(url=url, headers=header)
         if r.status_code == 200 and r.text.__contains__('good'):
             print('update successful')
